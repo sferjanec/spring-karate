@@ -68,9 +68,9 @@ target/site/jacoco/index.html
 
 The following steps were used to support API test coverage with Karate and merge it with unit test coverage:
 
-Dump JaCoCo coverage data from the Spring Boot app while it's running (after Karate API tests run)
+1. Dump JaCoCo coverage data from the Spring Boot app while it's running (after Karate API tests run)
 
-Merge multiple .exec files into a single report (jacoco.exec, jacoco-karate.exec, etc.)
+2. Merge multiple .exec files into a single report (jacoco.exec, jacoco-karate.exec, etc.)
 
 Since these steps aren't part of the default maven lifecycle, I added two custom profiles:
 

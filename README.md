@@ -20,6 +20,40 @@ This project demonstrates how to:
 
 ## 🚀 How to Run the Project
 
+### Single Script:
+
+I now use a single script to automate the workflow
+
+```bash
+./collect-coverage.sh
+```
+
+This script will:
+
+- Clean and build the Spring Boot app
+- Start the Spring Boot app with the JaCoCo agent
+- Run Karate tests while the app is running
+- Dump execution data from JaCoCo agent
+- Generate a coverage report
+
+🧪 About the Tests
+Karate tests are located under:
+
+```
+src/test/java/features/*.feature
+```
+
+These include scenarios that call Spring Boot endpoints like:
+
+/hello/formal
+/hello/informal
+/hello/status/{code}
+/hello/echo
+
+This illustrates that another test runner, such as Karate or Katalon, can drive the code coverage, and the results data can be combined with JUnit results in a single jacoco.exec file. We can then generate a report off of this combined jacoco.exec that shows coverage from multiple test runners.
+
+### Manual Steps:
+
 ### 1. Build the Application
 
 ```bash

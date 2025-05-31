@@ -13,10 +13,8 @@ This project demonstrates how to:
 
 - Java 17 or 21
 - Maven 3.6+
-- Git
-- (Optional) IntelliJ or your preferred IDE
 - Karate (bundled via Maven)
-- JaCoCo Agent JAR: already included in `jacoco-agent/`
+- JaCoCo Agent JAR: included in `jacoco-agent/`
 
 ---
 

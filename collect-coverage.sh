@@ -23,7 +23,7 @@ curl -s http://localhost:8080/hello/formal > /dev/null
 curl -s http://localhost:8080/hello/informal > /dev/null
 
 echo "📥 Dumping JaCoCo exec data from running app..."
-mvn -f jacoco-dump.xml jacoco:dump
+mvn jacoco:dump
 
 echo "🧾 Generating JaCoCo report..."
 mvn jacoco:report -DdataFile=target/jacoco.exec

@@ -88,6 +88,18 @@
                             <outputDirectory>${project.reporting.outputDirectory}/jacoco</outputDirectory>
                         </configuration>
                     </execution>
+                    <execution>
+                    <id>default-dump</id>
+                    <phase>none</phase> <!-- Allows manual execution with mvn jacoco:dump -->
+                    <goals>
+                        <goal>dump</goal>
+                    </goals>
+                    <configuration>
+                        <address>localhost</address>
+                        <port>6300</port>
+                        <destFile>${project.build.directory}/jacoco.exec</destFile>
+                    </configuration>
+                    </execution>
                 </executions>
             </plugin>
             <plugin>

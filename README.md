@@ -80,20 +80,13 @@ mvn test -Dtest=features.KarateTest
 ### 4: Dump JaCoCo Coverage from Running App
 
 ```
-mvn jacoco:dump -Pdump-karate
+mvn jacoco:dump
 ```
 
 This saves coverage data to:
-target/jacoco-karate.exec
+target/jacoco.exec
 
 ### 5: Merge Unit + Karate Coverage
-
-```
-mvn verify -Pmerge-coverage
-```
-
-This should create:
-target/jacoco-merged.exec
 
 ### 6: Generate Final Report
 
@@ -105,20 +98,14 @@ mvn jacoco:report
 
 target/site/jacoco/index.html
 
-### Additional Info:
+## Additional Info:
 
-The following steps were used to support API test coverage with Karate and merge it with unit test coverage:
+### Coverage Sources Summary
 
-1. Dump JaCoCo coverage data from the Spring Boot app while it's running (after Karate API tests run)
+| Source       | Trigger Command                  | JaCoCo Output File   | Notes                                  |
+| ------------ | -------------------------------- | -------------------- | -------------------------------------- |
+| JUnit Tests  | `mvn test`                       | `target/jacoco.exec` | Uses `prepare-agent`                   |
+| Karate Tests | `mvn test -Dtest=...`            | `target/jacoco.exec` | Requires app running with JaCoCo agent |
+| Manual curl  | `curl http://localhost:8080/...` | `target/jacoco.exec` | Must run `mvn jacoco:dump` after curl  |
 
-2. Merge multiple .exec files into a single report (jacoco.exec, jacoco-karate.exec, etc.)
-
-Since these steps aren't part of the default maven lifecycle, I added two custom profiles:
-
-- dump-karate
-  This dumps code coverage from the live Spring Boot app after Karate tests run.
-
-- merge-coverage
-  This merges all available .exec files (unit + API test data) into one file for reporting.
-
-The custom profiles also keeps the custom build steps clean, and doesn't impact the default mvn clean install.
+![alt text](image.png)
